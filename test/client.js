@@ -42,4 +42,47 @@ describe('Client', function () {
       });
     });
   });
+
+  describe('instances', function () {
+
+    beforeEach(function () {
+      nock('http://host1:9090')
+        .get('/x')
+        .reply(200, {
+          host: 1
+        });
+
+      nock('http://host2:9090')
+        .get('/x')
+        .reply(200, {
+          host: 2
+        });
+    });
+
+    it('must be independent', function () {
+      var client1 = new Client({
+        hostname: 'host1'
+      });
+
+      var client2 = new Client({
+        hostname: 'host2'
+      });
+
+      client1.indexes.request({
+        pathname: 'x'
+      }, function (err, res) {
+        expect(res.body).to.deep.equal({
+          host: 1
+        });
+      });
+
+      client2.indexes.request({
+        pathname: 'x'
+      }, function (err, res) {
+        expect(res.body).to.deep.equal({
+          host: 2
+        });
+      });
+    });
+  });
 });
