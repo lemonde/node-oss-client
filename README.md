@@ -1,4 +1,4 @@
-# Node.js client for OSS
+# Node.js client for OSS [![Build Status](https://travis-ci.org/lemonde/node-oss-client.png?branch=master)](https://travis-ci.org/lemonde/node-oss-client)
 
 A Node.js client for [Open Search Server](http://www.open-search-server.com/).
 
@@ -45,7 +45,7 @@ Create a new index, you can specify a template with `options.template`.
 client.indexes.create('my_index', function (err, res) { });
 ```
 
-#### client.indexes.destroy(index,callback)
+#### client.indexes.destroy(index, callback)
 
 Destroy an existing index.
 
