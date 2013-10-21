@@ -3,34 +3,29 @@
 var chai = require('chai').use(require('sinon-chai')),
   expect = chai.expect,
   sinon = require('sinon'),
-  searchFactory = require('../lib/search');
+  oss = require('../');
 
 describe('Search', function () {
 
-  var client, search;
+  var client, rq;
 
   beforeEach(function () {
-    client = {
-      request: sinon.spy()
-    };
-
-    search = searchFactory(client);
+    client = oss.createClient();
+    rq = sinon.stub(client, 'request');
   });
 
   it('should be possible to make a search', function () {
 
-    var callback = function () {};
-
-    search('my_index', {
+    client.search('my_index', {
       query: 'My query'
-    }, callback);
+    });
 
-    expect(client.request).to.be.calledWith({
+    expect(rq).to.be.calledWith({
       json: {
         query: 'My query'
       },
       method: 'POST',
       pathname: '/services/rest/index/my_index/search/field'
-    }, callback);
+    });
   });
 });
