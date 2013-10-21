@@ -1,0 +1,35 @@
+{
+  "name": "node-oss-client",
+  "version": "0.1.0",
+  "description": "Node.js client for Open Search Server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lemonde/node-oss-client.git"
+  },
+  "keywords": [
+    "oss",
+    "open",
+    "search",
+    "server"
+  ],
+  "author": "Greg Bergé <berge.greg@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lemonde/node-oss-client/issues"
+  },
+  "dependencies": {
+    "request": "~2.27.0",
+    "lodash": "~2.2.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "chai": "~1.8.1",
+    "nock": "~0.22.1",
+    "sinon": "~1.7.3",
+    "sinon-chai": "~2.4.0"
+  }
+}
