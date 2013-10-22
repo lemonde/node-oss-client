@@ -82,3 +82,62 @@ Destroy an existing field on an existing index.
 ```js
 client.indexes.destroy('my_index', 'my_field', function (err, res) { });
 ```
+
+### Documents
+
+#### client.documents.create(index, options, callback)
+
+Create documents on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Document-put-JSON).
+
+```js
+client.documents.create('my_index', [
+  {
+    lang: 'FRENCH',
+    fields: [
+      {name: 'id', value: 1},
+      {name: 'content', value: 'Hello world!'}
+    ]
+  },
+  {
+    lang: 'FRENCH',
+    fields: [
+      {name: 'id', value: 2},
+      {name: 'content', value: 'Hello world 2!'}
+    ]
+  }
+], function (err, res) { });
+```
+
+#### client.documents.update(index, options, callback)
+
+Update existing documents on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Document-put-JSON).
+
+```js
+client.documents.update('my_index', [
+  {
+    lang: 'FRENCH',
+    fields: [
+      {name: 'id', value: 1},
+      {name: 'content', value: 'Hello world!'}
+    ]
+  },
+  {
+    lang: 'FRENCH',
+    fields: [
+      {name: 'id', value: 2},
+      {name: 'content', value: 'Hello world 2!'}
+    ]
+  }
+], function (err, res) { });
+```
+
+#### client.documents.destroy(index, options, callback)
+
+Destroy existing documents on an existing index. You must specify a field (`options.field`) and some values (`options.values`).
+
+```js
+client.documents.destroy('my_index', {
+  field: 'id',
+  values: [1, 2]
+}, function (err, res) { });
+```
