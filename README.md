@@ -23,6 +23,20 @@ client.search('my_index', {
 
 ## Usage
 
+### Client
+
+#### oss.createClient(options)
+
+Create a new client, avalaible options are `hostname`, `port` and `protocol`.
+
+```js
+var client = oss.createClient({
+  hostname: 'my.host.com',
+  port: 8080,
+  protocol: 'http'
+});
+```
+
 ### Search
 
 #### client.search(index, options, callback)
