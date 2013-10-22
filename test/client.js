@@ -86,7 +86,7 @@ describe('Client', function () {
       client1.indexes.request({
         pathname: 'x'
       }, function (err, res) {
-        expect(res.body).to.deep.equal({
+        expect(res).to.deep.equal({
           host: 1
         });
       });
@@ -94,7 +94,7 @@ describe('Client', function () {
       client2.indexes.request({
         pathname: 'x'
       }, function (err, res) {
-        expect(res.body).to.deep.equal({
+        expect(res).to.deep.equal({
           host: 2
         });
       });
