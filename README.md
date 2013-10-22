@@ -52,3 +52,33 @@ Destroy an existing index.
 ```js
 client.indexes.create('my_index', function (err, res) { });
 ```
+
+### Fields
+
+#### client.fields.create(index, options, callback)
+
+Create a new field on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Field-create-update).
+
+```js
+client.indexes.create('my_index', {
+  name: 'my_field'
+}, function (err, res) { });
+```
+
+#### client.fields.update(index, options, callback)
+
+Update an existing field on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Field-create-update).
+
+```js
+client.indexes.update('my_index', {
+  name: 'my_field'
+}, function (err, res) { });
+```
+
+#### client.fields.destroy(index, field, callback)
+
+Destroy an existing field on an existing index.
+
+```js
+client.indexes.destroy('my_index', 'my_field', function (err, res) { });
+```
