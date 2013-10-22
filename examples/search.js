@@ -4,7 +4,7 @@ var oss = require('../index'),
 client.search('my_index', {
   query: 'my query'
 }, function (err, res) {
-  if (err) return console.log(err);
+  if (err) return console.error(err);
 
-  console.log(res.body);
+  console.log(res);
 });

@@ -13,30 +13,45 @@ describe('Client', function () {
   });
 
   describe('#request', function () {
+    var client;
 
     beforeEach(function () {
+      client = new Client();
+
       nock('http://localhost:9090')
         .post('/my-path')
         .reply(200, {
           foo: 'bar'
         });
+
+      nock('http://localhost:9090')
+        .post('/my-error-path')
+        .reply(400, 'My error');
     });
 
     it('should be possible to make a request', function (done) {
-      var client = new Client();
 
       client.request({
         pathname: '/my-path',
-        method: 'POST',
-        json: {
-          kung: 'foo'
-        }
+        method: 'POST'
       }, function (err, res) {
         if (err) return done(err);
 
-        expect(res.body).to.deep.equal({
+        expect(res).to.deep.equal({
           foo: 'bar'
         });
+
+        done();
+      });
+    });
+
+    it('should handle error correctly', function (done) {
+
+      client.request({
+        pathname: '/my-error-path',
+        method: 'POST'
+      }, function (err) {
+        expect(err).to.equal('My error');
 
         done();
       });
