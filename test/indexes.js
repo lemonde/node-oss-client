@@ -5,7 +5,7 @@ var chai = require('chai').use(require('sinon-chai')),
   sinon = require('sinon'),
   oss = require('../');
 
-describe('Index', function () {
+describe('Indexes', function () {
 
   var client, rq;
 
