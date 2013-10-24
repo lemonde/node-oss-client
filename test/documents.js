@@ -14,11 +14,11 @@ describe('Documents', function () {
     rq = sinon.stub(client.documents, 'request');
   });
 
-  describe('#create', function () {
+  describe('#createOrUpdate', function () {
 
     it('should be possible to create a single document', function () {
 
-      client.documents.create('my_index', {
+      client.documents.createOrUpdate('my_index', {
         fields: [
           {name: 'id', value: 1},
           {name: 'text', value: 'my value'}
@@ -41,7 +41,7 @@ describe('Documents', function () {
 
     it('should be possible to create multiple documents', function () {
 
-      client.documents.create('my_index', [
+      client.documents.createOrUpdate('my_index', [
         {
           fields: [
             {name: 'id', value: 1},
@@ -75,13 +75,10 @@ describe('Documents', function () {
         ]
       });
     });
-  });
-
-  describe('#update', function () {
 
     it('should be possible to update a single document', function () {
 
-      client.documents.update('my_index', {
+      client.documents.createOrUpdate('my_index', {
         fields: [
           {name: 'id', value: 1},
           {name: 'text', value: 'my new value'}

@@ -69,22 +69,14 @@ client.indexes.create('my_index', function (err, res) { });
 
 ### Fields
 
-#### client.fields.create(index, options, callback)
+#### client.fields.createOrUpdate(index, options, callback)
 
-Create a new field on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Field-create-update).
+Create or update a new field on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Field-create-update).
+
+Aliases: client.fields.update, client.fields.create.
 
 ```js
 client.indexes.create('my_index', {
-  name: 'my_field'
-}, function (err, res) { });
-```
-
-#### client.fields.update(index, options, callback)
-
-Update an existing field on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Field-create-update).
-
-```js
-client.indexes.update('my_index', {
   name: 'my_field'
 }, function (err, res) { });
 ```
@@ -99,35 +91,14 @@ client.indexes.destroy('my_index', 'my_field', function (err, res) { });
 
 ### Documents
 
-#### client.documents.create(index, options, callback)
+#### client.documents.createOrUpdate(index, options, callback)
 
-Create documents on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Document-put-JSON).
+Create or update documents on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Document-put-JSON).
+
+Aliases: client.documents.update, client.documents.create.
 
 ```js
 client.documents.create('my_index', [
-  {
-    lang: 'FRENCH',
-    fields: [
-      {name: 'id', value: 1},
-      {name: 'content', value: 'Hello world!'}
-    ]
-  },
-  {
-    lang: 'FRENCH',
-    fields: [
-      {name: 'id', value: 2},
-      {name: 'content', value: 'Hello world 2!'}
-    ]
-  }
-], function (err, res) { });
-```
-
-#### client.documents.update(index, options, callback)
-
-Update existing documents on an existing index. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Document-put-JSON).
-
-```js
-client.documents.update('my_index', [
   {
     lang: 'FRENCH',
     fields: [

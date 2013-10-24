@@ -1,7 +1,7 @@
 var oss = require('../../index'),
   client = oss.createClient();
 
-client.fields.create('my_index', {
+client.fields.createOrUpdate('my_index', {
   name: 'my_field',
   stored: true
 }, function (err, res) {

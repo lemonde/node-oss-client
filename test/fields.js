@@ -14,11 +14,11 @@ describe('Fields', function () {
     rq = sinon.stub(client.fields, 'request');
   });
 
-  describe('#create', function () {
+  describe('#createOrUpdate', function () {
 
     it('should be possible to create a field', function () {
 
-      client.fields.create('my_index', {
+      client.fields.createOrUpdate('my_index', {
         name: 'my_field',
         stored: true
       });
@@ -32,13 +32,10 @@ describe('Fields', function () {
         }
       });
     });
-  });
-
-  describe('#update', function () {
 
     it('should be possible to update a field', function () {
 
-      client.fields.update('my_index', {
+      client.fields.createOrUpdate('my_index', {
         name: 'my_field',
         stored: true
       });
