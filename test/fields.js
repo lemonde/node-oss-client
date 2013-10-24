@@ -24,8 +24,8 @@ describe('Fields', function () {
       });
 
       expect(rq).to.be.calledWith({
-        method: 'POST',
-        pathname: '/services/rest/index/my_index/field',
+        method: 'PUT',
+        pathname: '/services/rest/index/my_index/field/my_field',
         json: {
           name: 'my_field',
           stored: 'YES'
@@ -44,8 +44,8 @@ describe('Fields', function () {
       });
 
       expect(rq).to.be.calledWith({
-        method: 'POST',
-        pathname: '/services/rest/index/my_index/field',
+        method: 'PUT',
+        pathname: '/services/rest/index/my_index/field/my_field',
         json: {
           name: 'my_field',
           stored: 'YES'
