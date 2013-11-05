@@ -64,7 +64,7 @@ client.indexes.create('my_index', function (err, res) { });
 Destroy an existing index.
 
 ```js
-client.indexes.create('my_index', function (err, res) { });
+client.indexes.destroy('my_index', function (err, res) { });
 ```
 
 ### Fields
@@ -76,7 +76,7 @@ Create or update a new field on an existing index. Options are avalaible in [OSS
 Aliases: client.fields.update, client.fields.create.
 
 ```js
-client.indexes.create('my_index', {
+client.fields.create('my_index', {
   name: 'my_field'
 }, function (err, res) { });
 ```
@@ -86,7 +86,7 @@ client.indexes.create('my_index', {
 Destroy an existing field on an existing index.
 
 ```js
-client.indexes.destroy('my_index', 'my_field', function (err, res) { });
+client.fields.destroy('my_index', 'my_field', function (err, res) { });
 ```
 
 ### Documents
