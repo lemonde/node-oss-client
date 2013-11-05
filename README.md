@@ -56,7 +56,15 @@ client.search('my_index', {
 Create a new index, you can specify a template with `options.template`.
 
 ```js
-client.indexes.create('my_index', function (err, res) { });
+client.indexes.create('my_index', [options], function (err, res) { });
+```
+
+#### client.indexes.exists(index, callback)
+
+Test if an index exists.
+
+```js
+client.indexes.exists('my_index', function (err, res) { });
 ```
 
 #### client.indexes.destroy(index, callback)

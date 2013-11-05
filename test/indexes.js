@@ -39,6 +39,19 @@ describe('Indexes', function () {
     });
   });
 
+  describe('#exists', function () {
+
+    it('should return if an index exists', function () {
+
+      client.indexes.exists('my_index');
+
+      expect(rq).to.be.calledWith({
+        method: 'GET',
+        pathname: '/services/rest/index/my_index'
+      });
+    });
+  });
+
   describe('#destroy', function () {
 
     it('should be possible to destroy an index', function () {
