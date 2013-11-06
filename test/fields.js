@@ -63,4 +63,24 @@ describe('Fields', function () {
       });
     });
   });
+
+  describe('#setUniqueDefault', function () {
+
+    it('should be possible to define unique and default field', function () {
+
+      client.fields.setUniqueDefault('my_index', {
+        default: 'my_default_field',
+        unique: 'my_unique_field'
+      });
+
+      expect(rq).to.be.calledWith({
+        method: 'POST',
+        pathname: '/services/rest/index/my_index/field',
+        qs: {
+          default: 'my_default_field',
+          unique: 'my_unique_field'
+        }
+      });
+    });
+  });
 });

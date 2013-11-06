@@ -97,6 +97,14 @@ Destroy an existing field on an existing index.
 client.fields.destroy('my_index', 'my_field', function (err, res) { });
 ```
 
+#### client.fields.setUniqueDefault(index, options, callback)
+
+Specify a default and unique index.
+
+```js
+client.fields.setUniqueDefault('my_index', { unique: 'my_unique_field', default: 'my_default_field' }, function (err, res) { });
+```
+
 ### Documents
 
 #### client.documents.createOrUpdate(index, options, callback)
