@@ -27,6 +27,11 @@ describe('Client', function () {
       nock('http://localhost:9090')
         .post('/my-error-path')
         .reply(400, 'My error');
+
+      nock('http://localhost:9090')
+        .post('/my-internal-error-path')
+        .reply(500);
+
     });
 
     it('should be possible to make a request', function (done) {
@@ -50,12 +55,29 @@ describe('Client', function () {
       client.request({
         pathname: '/my-error-path',
         method: 'POST'
-      }, function (err) {
-        expect(err).to.equal('My error');
+      }, function (err, res) {
+        expect(err instanceof Error).to.be.true;
+        expect(err.message).to.be.equal('My error');
+        expect(res).to.be.undefined;
 
         done();
       });
     });
+
+    it('should handle OSS internal error correctly', function (done) {
+
+      client.request({
+        pathname: '/my-internal-error-path',
+        method: 'POST'
+      }, function (err, res) {
+        expect(err instanceof Error).to.be.true;
+        expect(err.message).to.be.equal('');
+        expect(res).to.be.undefined;
+
+        done();
+      });
+    });
+
   });
 
   describe('instances', function () {
