@@ -1,6 +1,6 @@
 {
   "name": "node-oss-client",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Node.js client for Open Search Server.",
   "main": "index.js",
   "scripts": {
