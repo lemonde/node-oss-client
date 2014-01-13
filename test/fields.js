@@ -83,4 +83,17 @@ describe('Fields', function () {
       });
     });
   });
+
+  describe('#list', function () {
+
+    it('should be possible to list the fileds of an index', function () {
+
+      client.fields.list('my_index');
+
+      expect(rq).to.be.calledWith({
+        method: 'GET',
+        pathname: '/services/rest/index/my_index/field/'
+      });
+    });
+  });
 });
