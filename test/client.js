@@ -78,6 +78,27 @@ describe('Client', function () {
       });
     });
 
+    describe('when the server is not reachable', function() {
+
+      beforeEach(function() {
+        client = new Client({
+          hostname: 'localhost',
+          port: 99999999
+        });
+      });
+
+      it('gives a usefull error message', function(done) {
+        client.request({
+          pathname: '/my-path',
+          method: 'POST'
+        }, function(err) {
+          var msg = 'Cannot connect to OpenSearchServer at http://localhost:99999999/my-path';
+          expect(err.message).to.equals(msg);
+          done();
+        });
+      });
+    });
+
   });
 
   describe('instances', function () {
