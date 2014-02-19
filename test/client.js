@@ -12,6 +12,25 @@ describe('Client', function () {
     expect(client.options).to.have.property('port');
   });
 
+  it('should work with privileges too', function() {
+    var client = new Client({
+      login: 'mylogin',
+      key: 'MYKEY1811LKJA120918230129de7c77'
+    });
+    nock('http://localhost:9090')
+      .post('/my-path')
+      .reply(200, {
+        foo: 'bar'
+      });
+    nock('http://localhost:9090')
+      .post('/my-error-path')
+      .reply(400, 'My error');
+
+    nock('http://localhost:9090')
+      .post('/my-internal-error-path')
+      .reply(500);
+  });
+
   describe('#request', function () {
     var client;
 
@@ -33,6 +52,7 @@ describe('Client', function () {
         .reply(500);
 
     });
+
 
     it('should be possible to make a request', function (done) {
 
