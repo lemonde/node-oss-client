@@ -89,6 +89,14 @@ client.fields.create('my_index', {
 }, function (err, res) { });
 ```
 
+#### client.fields.list(index, callback)
+
+List all index fields.
+
+```js
+client.fields.list('my_index', function (err, res) { });
+```
+
 #### client.fields.destroy(index, field, callback)
 
 Destroy an existing field on an existing index.
@@ -103,6 +111,41 @@ Specify a default and unique index.
 
 ```js
 client.fields.setUniqueDefault('my_index', { unique: 'my_unique_field', default: 'my_default_field' }, function (err, res) { });
+```
+
+### Search templates
+
+#### client.templates.createOrUpdate(index, name, options, callback)
+
+Create or update a search template. Options are avalaible in [OSS Documentation](https://github.com/jaeksoft/opensearchserver/wiki/Search-template-field-set).
+
+Aliases: client.templates.update, client.templates.create.
+
+```js
+client.templates.create('my_index', 'my_template', { returnedFields: ['my_field'] }, function (err, res) { });
+```
+
+#### client.templates.list(index, callback)
+
+List all search templates associated to the specified index.
+
+```js
+client.templates.list('my_index', function (err, res) { });
+
+#### client.templates.get(index, name, callback)
+
+Get a search template.
+
+```js
+client.templates.get('my_index', 'my_template', function (err, res) { });
+```
+
+#### client.templates.destroy(index, name, callback)
+
+Destroy a search template.
+
+```js
+client.templates.destroy('my_index', 'my_template', function (err, res) { });
 ```
 
 ### Documents
