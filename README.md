@@ -136,6 +136,7 @@ List all search templates associated to the specified index.
 
 ```js
 client.templates.list('my_index', function (err, res) { });
+````
 
 #### client.templates.get(index, name, callback)
 
