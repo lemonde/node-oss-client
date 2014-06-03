@@ -53,6 +53,17 @@ client.search('my_index', {
   query: 'my_query'
 }, function (err, res) { });
 ```
+### More like this
+
+#### client.moreLikeThis(index, options, callback)
+
+Request a more like this query on a custom index. Available options can be found in [OSS Documentation](http://www.opensearchserver.com/documentation/api_v2/more-like-this/query.html).
+
+```js
+client.moreLikeThis('my_index', {
+  likeText: 'Text to search for similarity'
+}, function (err, res) { });
+```
 
 ### Indexes
 
