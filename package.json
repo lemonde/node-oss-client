@@ -22,15 +22,15 @@
     "url": "https://github.com/lemonde/node-oss-client/issues"
   },
   "dependencies": {
-    "lodash": "~2.2.1",
-    "request": "~2.27.0",
-    "underscore.string": "^2.3.3"
+    "lodash": "~3.7.0",
+    "request": "~2.55.0",
+    "underscore.string": "~3.0.3"
   },
   "devDependencies": {
-    "mocha": "~1.13.0",
-    "chai": "~1.8.1",
-    "nock": "~0.22.1",
-    "sinon": "~1.7.3",
-    "sinon-chai": "~2.4.0"
+    "chai": "~2.2.0",
+    "mocha": "~2.2.4",
+    "nock": "~1.6.1",
+    "sinon": "~1.14.1",
+    "sinon-chai": "~2.7.0"
   }
 }

@@ -4,6 +4,8 @@ var expect = require('chai').expect,
   nock = require('nock'),
   Client = require('../lib/client');
 
+  nock.enableNetConnect();
+
 describe('Client', function () {
 
   it('should have default options', function () {
