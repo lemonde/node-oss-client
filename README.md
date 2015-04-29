@@ -2,14 +2,17 @@
 
 A Node.js client for [Open Search Server](http://www.open-search-server.com/).
 
+See also parent module [oss-odm](https://github.com/lemonde/oss-odm).
+
+
 ## Install
 
 ```sh
 npm install node-oss-client
 ```
 
-## Example
 
+## Example
 ```js
 var oss = require('node-oss-client'),
   client = oss.createClient();
@@ -20,6 +23,8 @@ client.search('my_index', {
   // ...
 });
 ```
+See the `examples` directory in this repo for more examples.
+
 
 ## Usage
 
@@ -27,7 +32,7 @@ client.search('my_index', {
 
 #### oss.createClient(options)
 
-Create a new client, avalaible options are 
+Create a new client. Available options are
 * hostname
 * port
 * protocol
@@ -53,6 +58,7 @@ client.search('my_index', {
   query: 'my_query'
 }, function (err, res) { });
 ```
+
 ### More like this
 
 #### client.moreLikeThis(index, options, callback)
@@ -202,3 +208,8 @@ client.documents.destroy('my_index', {
   values: [1, 2]
 }, function (err, res) { });
 ```
+
+
+## License
+
+MIT
