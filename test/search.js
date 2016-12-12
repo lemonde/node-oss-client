@@ -1,20 +1,20 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
+const chai = require('chai').use(require('sinon-chai')),
   expect = chai.expect,
   sinon = require('sinon'),
   oss = require('../');
 
-describe('Search', function () {
+describe('Search', () => {
 
-  var client, rq;
+  let client, rq;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     rq = sinon.stub(client, 'request');
   });
 
-  it('should be possible to make a search', function () {
+  it('should be possible to make a search', () => {
 
     client.search('my_index', {
       query: 'My query'

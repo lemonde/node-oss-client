@@ -1,22 +1,22 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
+const chai = require('chai').use(require('sinon-chai')),
   expect = chai.expect,
   sinon = require('sinon'),
   oss = require('../');
 
-describe('Fields', function () {
+describe('Fields', () => {
 
-  var client, rq;
+  let client, rq;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     rq = sinon.stub(client.fields, 'request');
   });
 
-  describe('#createOrUpdate', function () {
+  describe('#createOrUpdate', () => {
 
-    it('should be possible to create a field', function () {
+    it('should be possible to create a field', () => {
 
       client.fields.createOrUpdate('my_index', {
         name: 'my_field',
@@ -33,7 +33,7 @@ describe('Fields', function () {
       });
     });
 
-    it('should be possible to update a field', function () {
+    it('should be possible to update a field', () => {
 
       client.fields.createOrUpdate('my_index', {
         name: 'my_field',
@@ -51,9 +51,9 @@ describe('Fields', function () {
     });
   });
 
-  describe('#destroy', function () {
+  describe('#destroy', () => {
 
-    it('should be possible to destroy an index', function () {
+    it('should be possible to destroy an index', () => {
 
       client.fields.destroy('my_index', 'my_field');
 
@@ -64,9 +64,9 @@ describe('Fields', function () {
     });
   });
 
-  describe('#setUniqueDefault', function () {
+  describe('#setUniqueDefault', () => {
 
-    it('should be possible to define unique and default field', function () {
+    it('should be possible to define unique and default field', () => {
 
       client.fields.setUniqueDefault('my_index', {
         default: 'my_default_field',
@@ -84,9 +84,9 @@ describe('Fields', function () {
     });
   });
 
-  describe('#list', function () {
+  describe('#list', () => {
 
-    it('should be possible to list the fileds of an index', function () {
+    it('should be possible to list the fileds of an index', () => {
 
       client.fields.list('my_index');
 

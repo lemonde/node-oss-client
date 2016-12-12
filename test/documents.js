@@ -1,22 +1,22 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
+const chai = require('chai').use(require('sinon-chai')),
   expect = chai.expect,
   sinon = require('sinon'),
   oss = require('../');
 
-describe('Documents', function () {
+describe('Documents', () => {
 
-  var client, rq;
+  let client, rq;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     rq = sinon.stub(client.documents, 'request');
   });
 
-  describe('#createOrUpdate', function () {
+  describe('#createOrUpdate', () => {
 
-    it('should be possible to create a single document', function () {
+    it('should be possible to create a single document', () => {
 
       client.documents.createOrUpdate('my_index', {
         fields: [
@@ -39,7 +39,7 @@ describe('Documents', function () {
       });
     });
 
-    it('should be possible to create multiple documents', function () {
+    it('should be possible to create multiple documents', () => {
 
       client.documents.createOrUpdate('my_index', [
         {
@@ -76,7 +76,7 @@ describe('Documents', function () {
       });
     });
 
-    it('should be possible to update a single document', function () {
+    it('should be possible to update a single document', () => {
 
       client.documents.createOrUpdate('my_index', {
         fields: [
@@ -100,9 +100,9 @@ describe('Documents', function () {
     });
   });
 
-  describe('#destroy', function () {
+  describe('#destroy', () => {
 
-    it('should be possible to destroy an index', function () {
+    it('should be possible to destroy an index', () => {
 
       client.documents.destroy('my_index', {
         field: 'id',
