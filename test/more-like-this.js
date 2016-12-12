@@ -2,21 +2,21 @@
 
 /* globals describe, it, beforeEach */
 
-var oss = require('../');
-var chai = require('chai').use(require('sinon-chai'));
-var sinon = require('sinon');
-var expect = chai.expect;
+const oss = require('../');
+const chai = require('chai').use(require('sinon-chai'));
+const sinon = require('sinon');
+const expect = chai.expect;
 
-describe('More like this', function () {
+describe('More like this', () => {
 
-  var client, rq;
+  let client, rq;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     rq = sinon.stub(client, 'request');
   });
 
-  it('should be possible to request more like this', function () {
+  it('should be possible to request more like this', () => {
 
     client.moreLikeThis('my_index', {
       minWordLen: 2

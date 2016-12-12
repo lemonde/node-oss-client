@@ -1,24 +1,24 @@
 /* globals describe, it, beforeEach */
 
-var expect = require('chai').expect,
+const expect = require('chai').expect,
   nock = require('nock'),
   Client = require('../lib/client');
 
   nock.enableNetConnect();
 
-describe('Client', function () {
+describe('Client', () => {
 
-  it('should have default options', function () {
-    var client = new Client();
+  it('should have default options', () => {
+    const client = new Client();
     expect(client.options).to.have.property('hostname');
     expect(client.options).to.have.property('port');
   });
 
-  describe('#request', function () {
-    describe('without credentials', function () {
-      var client;
+  describe('#request', () => {
+    describe('without credentials', () => {
+      let client;
 
-      beforeEach(function () {
+      beforeEach(() => {
         client = new Client();
 
         nock('http://localhost:9090')
@@ -37,12 +37,12 @@ describe('Client', function () {
 
       });
 
-      it('should be possible to make a request', function (done) {
+      it('should be possible to make a request', (done) => {
 
         client.request({
           pathname: '/my-path',
           method: 'POST'
-        }, function (err, res) {
+        }, (err, res) => {
           if (err) return done(err);
 
           expect(res).to.deep.equal({
@@ -53,60 +53,60 @@ describe('Client', function () {
         });
       });
 
-      it('should handle error correctly', function (done) {
+      it('should handle error correctly', (done) => {
 
         client.request({
           pathname: '/my-error-path',
           method: 'POST'
-        }, function (err, res) {
+        }, (err, res) => {
           expect(err instanceof Error).to.be.true;
-          expect(err.message).to.be.equal('My error');
           expect(res).to.be.undefined;
+          expect(err.message).to.equal('My error');
 
           done();
         });
       });
 
-      it('should handle OSS internal error correctly', function (done) {
+      it('should handle OSS internal error correctly', (done) => {
 
         client.request({
           pathname: '/my-internal-error-path',
           method: 'POST'
-        }, function (err, res) {
+        }, (err, res) => {
           expect(err instanceof Error).to.be.true;
-          expect(err.message).to.be.equal('');
           expect(res).to.be.undefined;
+          expect(err.message).to.equal('');
 
           done();
         });
       });
 
-      describe('when the server is not reachable', function() {
+      describe('when the server is not reachable', () => {
 
-        beforeEach(function() {
+        beforeEach(() => {
           client = new Client({
             hostname: 'localhost',
-            port: 99999999
+            port: 9999
           });
         });
 
-        it('gives a usefull error message', function(done) {
+        it('gives a usefull error message', (done) => {
           client.request({
             pathname: '/my-path',
             method: 'POST'
-          }, function(err) {
-            var msg = 'Cannot connect to OpenSearchServer at http://localhost:99999999/my-path';
-            expect(err.message).to.equals(msg);
+          }, (err) => {
+            const msg = 'Cannot connect to OpenSearchServer at http://localhost:9999/my-path';
+            expect(err.message).to.equal(msg);
             done();
           });
         });
       });
     });
 
-    describe('with credentials', function () {
-      var client;
+    describe('with credentials', () => {
+      let client;
 
-      beforeEach(function () {
+      beforeEach(() => {
         client = new Client({
           login: 'mylogin',
           key: 'mykey'
@@ -119,11 +119,11 @@ describe('Client', function () {
           });
       });
 
-      it('should be possible to make a request', function (done) {
+      it('should be possible to make a request', (done) => {
         client.request({
           pathname: '/my-path',
           method: 'POST'
-        }, function (err, res) {
+        }, (err, res) => {
           if (err) return done(err);
 
           expect(res).to.deep.equal({
@@ -136,9 +136,9 @@ describe('Client', function () {
     });
   });
 
-  describe('instances', function () {
+  describe('instances', () => {
 
-    beforeEach(function () {
+    beforeEach(() => {
       nock('http://host1:9090')
         .get('/x')
         .reply(200, {
@@ -152,12 +152,12 @@ describe('Client', function () {
         });
     });
 
-    it('must be independent', function () {
-      var client1 = new Client({
+    it('must be independent', () => {
+      const client1 = new Client({
         hostname: 'host1'
       });
 
-      var client2 = new Client({
+      const client2 = new Client({
         hostname: 'host2'
       });
 
