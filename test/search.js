@@ -1,29 +1,25 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
-  expect = chai.expect,
-  sinon = require('sinon'),
-  oss = require('../');
+const chai = require('chai').use(require('sinon-chai'));
+const expect = chai.expect;
+const sinon = require('sinon');
+const oss = require('../');
 
-describe('Search', function () {
+describe('Search', () => {
 
-  var client, rq;
+  let client, rq;
 
   beforeEach(function () {
     client = oss.createClient();
     rq = sinon.stub(client, 'request');
   });
 
-  it('should be possible to make a search', function () {
+  it('should be possible to make a search', () => {
 
-    client.search('my_index', {
-      query: 'My query'
-    });
+    client.search('my_index', { query: 'My query' });
 
     expect(rq).to.be.calledWith({
-      json: {
-        query: 'My query'
-      },
+      json: { query: 'My query' },
       method: 'POST',
       pathname: '/services/rest/index/my_index/search/field'
     });

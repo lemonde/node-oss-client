@@ -1,22 +1,22 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
-  expect = chai.expect,
-  sinon = require('sinon'),
-  oss = require('../');
+const chai = require('chai').use(require('sinon-chai'));
+const expect = chai.expect;
+const sinon = require('sinon');
+const oss = require('../');
 
-describe('Indexes', function () {
+describe('Indexes', () => {
 
-  var client, rq;
+  let client, rq;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     rq = sinon.stub(client.indexes, 'request');
   });
 
-  describe('#create', function () {
+  describe('#create', () => {
 
-    it('should be possible to create an index', function () {
+    it('should be possible to create an index', () => {
 
       client.indexes.create('my_index');
 
@@ -26,11 +26,9 @@ describe('Indexes', function () {
       });
     });
 
-    it('should be possible to create an index with a template', function () {
+    it('should be possible to create an index with a template', () => {
 
-      client.indexes.create('my_index', {
-        template: 'my_template'
-      });
+      client.indexes.create('my_index', { template: 'my_template' });
 
       expect(rq).to.be.calledWith({
         method: 'POST',
@@ -39,9 +37,9 @@ describe('Indexes', function () {
     });
   });
 
-  describe('#exists', function () {
+  describe('#exists', () => {
 
-    it('should return if an index exists', function () {
+    it('should return if an index exists', () => {
 
       client.indexes.exists('my_index');
 
@@ -52,9 +50,9 @@ describe('Indexes', function () {
     });
   });
 
-  describe('#destroy', function () {
+  describe('#destroy', () => {
 
-    it('should be possible to destroy an index', function () {
+    it('should be possible to destroy an index', () => {
 
       client.indexes.destroy('my_index');
 

@@ -1,26 +1,23 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
-  expect = chai.expect,
-  sinon = require('sinon'),
-  oss = require('../');
+const chai = require('chai').use(require('sinon-chai'));
+const expect = chai.expect;
+const sinon = require('sinon');
+const oss = require('../');
 
-describe('Replication', function () {
+describe('Replication', () => {
 
-  var client, request, searcher;
+  let client, request, searcher;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     request = sinon.stub(client, 'request');
-    searcher = {
-      hostname: 'searcher-oss.com',
-      port: 8000
-    };
+    searcher = { hostname: 'searcher-oss.com', port: 8000 };
   });
 
-  describe('#createReplicationIndex', function () {
+  describe('#createReplicationIndex', () => {
 
-    it('should request the API to create a replication index', function () {
+    it('should request the API to create a replication index', () => {
 
       client.createReplicationIndex('my_index', searcher);
 
@@ -36,7 +33,7 @@ describe('Replication', function () {
       });
     });
 
-    it('should request the API to start a replication on an index', function () {
+    it('should request the API to start a replication on an index', () => {
       client.replicate('my_index', searcher);
 
       expect(request).to.be.calledWithMatch({
