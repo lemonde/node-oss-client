@@ -1,6 +1,5 @@
 /* globals describe, it */
 
-const expect = require('chai').expect;
 const util = require('../lib/util');
 
 describe('Util', () => {

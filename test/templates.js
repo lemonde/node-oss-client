@@ -1,8 +1,5 @@
 /* globals describe, it, beforeEach */
 
-const chai = require('chai').use(require('sinon-chai'));
-const expect = chai.expect;
-const sinon = require('sinon');
 const oss = require('../');
 
 describe('Templates', () => {

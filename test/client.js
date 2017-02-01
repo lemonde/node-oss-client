@@ -1,6 +1,5 @@
 /* globals describe, it, beforeEach */
 
-const expect = require('chai').expect;
 const nock = require('nock');
 const Client = require('../lib/client');
 

@@ -1,9 +1,6 @@
 /* globals describe, it, beforeEach */
 
 const oss = require('../');
-const chai = require('chai').use(require('sinon-chai'));
-const sinon = require('sinon');
-const expect = chai.expect;
 
 describe('More like this', () => {
 
