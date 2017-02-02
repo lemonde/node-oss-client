@@ -1,21 +1,18 @@
 /* globals describe, it, beforeEach */
 
-var chai = require('chai').use(require('sinon-chai')),
-  expect = chai.expect,
-  sinon = require('sinon'),
-  oss = require('../');
+const oss = require('../');
 
-describe('Templates', function () {
+describe('Templates', () => {
 
-  var client, rq;
+  let client, rq;
 
-  beforeEach(function () {
+  beforeEach(() => {
     client = oss.createClient();
     rq = sinon.stub(client.templates, 'request');
   });
 
-  describe('#createOrUpdate', function () {
-    it('should be possible to create a field', function () {
+  describe('#createOrUpdate', () => {
+    it('should be possible to create a field', () => {
 
       client.templates.createOrUpdate('my_index', 'my_template', {
         returnedFields: ['my_field']
@@ -24,15 +21,13 @@ describe('Templates', function () {
       expect(rq).to.be.calledWith({
         method: 'PUT',
         pathname: '/services/rest/index/my_index/search/field/my_template',
-        json: {
-          returnedFields: ['my_field']
-        }
+        json: { returnedFields: ['my_field'] }
       });
     });
   });
 
-  describe('#destroy', function () {
-    it('should be possible to destroy an index', function () {
+  describe('#destroy', () => {
+    it('should be possible to destroy an index', () => {
 
       client.templates.destroy('my_index', 'my_template');
 
@@ -43,8 +38,8 @@ describe('Templates', function () {
     });
   });
 
-  describe('#list', function () {
-    it('should be possible to list templates', function () {
+  describe('#list', () => {
+    it('should be possible to list templates', () => {
 
       client.templates.list('my_index');
 
@@ -55,8 +50,8 @@ describe('Templates', function () {
     });
   });
 
-  describe('#get', function () {
-    it('should be possible to get a template', function () {
+  describe('#get', () => {
+    it('should be possible to get a template', () => {
 
       client.templates.get('my_index', 'my_template');
 
