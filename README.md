@@ -211,21 +211,21 @@ client.documents.destroy('my_index', {
 
 ### Replication
 
-#### client.replication.createReplicationIndex(index, searcher, callback)
+#### client.replication.createIndexReplication(index, searcher, callback)
 
-Creates a replication index on an OSS server. You must specify an object `searcher` with 3 keys : `hostname`, `port` and an optional `protocol` (http by default). 
+Creates a replication index on an OSS server. You must specify an object `searcher` with 3 keys : `hostname`, `port` and an optional `protocol` (http by default).
 
 ```js
-client.replication.createReplicationIndex('my_index', {
+client.replication.createIndexReplication('my_index', {
   hostname: 'searcher-oss.com',
   port: 8080,
   protocol: 'http'
 }, function (err, res) { });
 ```
 
-#### client.replication.createReplicationIndex(index, searcher, callback)
+#### client.replication.replicate(index, searcher, callback)
 
-Starts a replication of the index passed as argument on an other OSS server passed as argument. You must specify an object `searcher` with 3 keys : `hostname`, `port` and an optional `protocol` (http by default). 
+Starts a replication of the index passed as argument on an other OSS server passed as argument. You must specify an object `searcher` with 3 keys : `hostname`, `port` and an optional `protocol` (http by default).
 
 ```js
 client.replication.replicate('my_index', {

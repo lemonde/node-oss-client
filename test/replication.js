@@ -12,11 +12,11 @@ describe('Replication', () => {
     searcher = { hostname: 'searcher-oss.com', port: 8000 };
   });
 
-  describe('#createReplicationIndex', () => {
+  describe('#createIndexReplication', () => {
 
     it('should request the API to create a replication index', () => {
 
-      client.createReplicationIndex('my_index', searcher);
+      client.createIndexReplication('my_index', searcher);
 
       expect(request).to.be.calledWithMatch({
         method: 'PUT',
