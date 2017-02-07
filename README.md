@@ -213,7 +213,7 @@ client.documents.destroy('my_index', {
 
 #### client.replication.createIndexReplication(index, searcher, callback)
 
-Creates a replication index on an OSS server. You must specify an object `searcher` with 3 keys : `hostname`, `port` and an optional `protocol` (http by default).
+Creates an index of replication on an OSS server. You must specify an object `searcher` with 3 keys : `hostname`, `port` and an optional `protocol` (http by default).
 
 ```js
 client.replication.createIndexReplication('my_index', {
