@@ -71,6 +71,18 @@ client.moreLikeThis('my_index', {
 }, function (err, res) { });
 ```
 
+### Autocompletion
+
+#### client.autocompletion(index, item, options, callback)
+
+Request autocompletion on an auto-completion item of a custom index. Available options can be found in [OSS Documentation](http://www.opensearchserver.com/documentation/api_v2/auto-completion/query.md).
+
+```js
+client.autocompletion('my_index', 'autocomplete_item', {
+  prefix: 'Text to complete'
+}, function (err, res) { });
+```
+
 ### Indexes
 
 #### client.indexes.create(index, [options], callback)
