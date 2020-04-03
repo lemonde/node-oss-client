@@ -22,6 +22,7 @@
     "url": "https://github.com/lemonde/node-oss-client/issues"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "lodash": "~3.7.0",
     "request": "~2.55.0",
     "underscore.string": "~3.0.3"
