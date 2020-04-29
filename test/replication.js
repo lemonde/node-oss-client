@@ -1,42 +1,37 @@
-/* globals describe, it, beforeEach */
+const oss = require("../");
 
-const oss = require('../');
-
-describe('Replication', () => {
-
+describe("Replication", () => {
   let client, request, searcher;
 
   beforeEach(() => {
     client = oss.createClient();
-    request = sinon.stub(client, 'request');
-    searcher = { hostname: 'searcher-oss.com', port: 8000 };
+    request = sinon.stub(client, "request");
+    searcher = { hostname: "searcher-oss.com", port: 8000 };
   });
 
-  describe('#createIndexReplication', () => {
-
-    it('should request the API to create a replication index', () => {
-
-      client.createIndexReplication('my_index', searcher);
+  describe("#createIndexReplication", () => {
+    it("should request the API to create a replication index", () => {
+      client.createIndexReplication("my_index", searcher);
 
       expect(request).to.be.calledWithMatch({
-        method: 'PUT',
-        pathname: '/services/rest/index/my_index/replication',
+        method: "PUT",
+        pathname: "/services/rest/index/my_index/replication",
         body: {
-          replicationType: 'MAIN_INDEX',
-          remoteUrl: 'http://searcher-oss.com:8000',
-          remoteIndexName: 'my_index',
-          secTimeOut: 120
-        }
+          replicationType: "MAIN_INDEX",
+          remoteUrl: "http://searcher-oss.com:8000",
+          remoteIndexName: "my_index",
+          secTimeOut: 120,
+        },
       });
     });
 
-    it('should request the API to start a replication on an index', () => {
-      client.replicate('my_index', searcher);
+    it("should request the API to start a replication on an index", () => {
+      client.replicate("my_index", searcher);
 
       expect(request).to.be.calledWithMatch({
-        method: 'PUT',
-        pathname: '/services/rest/index/my_index/replication/run',
-        search: 'name=http://searcher-oss.com:8000/my_index'
+        method: "PUT",
+        pathname: "/services/rest/index/my_index/replication/run",
+        search: "name=http://searcher-oss.com:8000/my_index",
       });
     });
   });
