@@ -1,8 +1,8 @@
 // chai
-chai = require('chai');
-expect = chai.expect;
-chai.config.includeStack = true;
+global.chai = require("chai");
+global.expect = global.chai.expect;
+global.chai.config.includeStack = true;
 
 // sinon
-sinon = require('sinon');
-chai.use(require('sinon-chai'));
+global.sinon = require("sinon");
+global.chai.use(require("sinon-chai"));
