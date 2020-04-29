@@ -4,6 +4,7 @@
   "description": "Node.js client for Open Search Server.",
   "main": "index.js",
   "scripts": {
+    "release": "standard-version",
     "format": "prettier --write '**/*.{js, md}'",
     "lint": "eslint .",
     "test": "mocha --require test/bootstrap.js"
@@ -35,6 +36,7 @@
     "nock": "~12.0.3",
     "prettier": "^2.0.5",
     "sinon": "~9.0.2",
-    "sinon-chai": "~3.5.0"
+    "sinon-chai": "~3.5.0",
+    "standard-version": "^7.1.0"
   }
 }
