@@ -15,6 +15,7 @@ describe("Search", () => {
       json: { query: "My query" },
       method: "POST",
       pathname: "/services/rest/index/my_index/search/field",
+      timeout: 180000,
     });
   });
 });

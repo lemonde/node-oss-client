@@ -18,6 +18,7 @@ describe("Autocompletion", () => {
       },
       method: "GET",
       pathname: "/services/rest/index/my_index/autocompletion/autocomplete",
+      timeout: 180000,
     });
   });
 });
